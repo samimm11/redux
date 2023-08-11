@@ -12,18 +12,22 @@ const Product = () => {
   }, []);
 
   const cards = products?products.map((product) => {
-    return (
-      <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+    {console.log("product",product)}
+    return (      
+      <div className="col-md-3">
+        <Card key={product.id} style={{ width: "18rem" }}> 
+          <div className="text-center">
+              <Card.Img variant="top" src={product.image} style={{width:'100px',height:'130px'}}/>
+          </div>          
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{product.title}</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+              INR {product.price}
+            </Card.Text>            
           </Card.Body>
+          <Card.Footer>
+            <Button variant="primary">Add to Cart</Button>
+          </Card.Footer>
         </Card>
       </div>
     );
@@ -31,7 +35,7 @@ const Product = () => {
   return (
     <>{console.log("products",products)}
       <div>Product</div>
-      <div>{cards}</div>
+      <div className="row">{cards}</div>
     </>
   );
 };
